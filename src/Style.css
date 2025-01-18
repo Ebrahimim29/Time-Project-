@@ -63,6 +63,10 @@ button{
 .reset_button{
   background-color: gray;
 }
+
+.test_button{
+  background-color: yellowgreen;
+}
   
 .action_button:hover{
   box-shadow: 0 0 5px white;
