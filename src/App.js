@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { createRoot } from 'react-dom/client';
 import './Style.css'
@@ -35,15 +35,29 @@ import Timer from './Timer';
 // روش 2: کامپوننت های نوع تابعی (روش مناسبتر)
 const App =()=>{
   const [title , setTitle]=useState("This is a Props!");
+  const [isLight , setIsLight]=useState(false);
 
-  const handleSetTitle=()=>{
-    setTitle("Welcome To Site!")
+  // const handleSetTitle=()=>{
+  //   setTitle("Welcome To Site!")
+  // }
+
+  const handleSetIsLight=()=>{
+    setIsLight(!isLight)
   }
+   
+  useEffect(()=>{
+    console.log("useEffect");
+    return()=>{
+//انجام دستور بعد از بسته شدن صفحه،صورت می گیرد
+    }
+  },[isLight])
+
   return(
-          <div className='main'>
+          <div className='main' style={{background:isLight ? "white": "black"}}>
             <h2>It is {new Date().toLocaleDateString()}</h2>
             <Hello title={title}/>     
-            <Timer handleSetTitle={handleSetTitle}/>      
+            {/* <Timer handleSetTitle={handleSetTitle}/>       */}
+            <Timer isLight={isLight} handleSetIsLight={handleSetIsLight}/>      
           </div>
         )
 }
