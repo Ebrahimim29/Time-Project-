@@ -2,6 +2,7 @@ import React from 'react';
 // import ReactDOM from 'react-dom';
 import { createRoot } from 'react-dom/client';
 import './Style.css'
+import SabtTime from './SabtTime';
 
 var interval;
 
@@ -57,6 +58,14 @@ class Timer extends React.Component{
       })
     }
     
+    handleSaveTime =()=>{
+      let h = this.state.hour;
+      let m = this.state.minute;
+      let s = this.state.second;
+      let newTime = `${h > 9 ? h : "0"+h} : ${m > 9 ? m : "0"+m} : ${s > 9 ? s : "0"+s}`
+      this.props.setTimeArr([...this.props.timeArr , newTime])
+
+    }
     render(){
         let h = this.state.hour;
         let m = this.state.minute;
@@ -64,7 +73,7 @@ class Timer extends React.Component{
         
       return(
         <>
-          <h2 className='timer'>
+          <h2 className='timer' onClick={this.handleSaveTime}>
             {/* {this.state.hour+":"+this.state.minute+":"+this.state.second} */}
             {`${h > 9 ? h : "0"+h} : ${m > 9 ? m : "0"+m} : ${s > 9 ? s : "0"+s}`}
           </h2>
@@ -81,6 +90,9 @@ class Timer extends React.Component{
             }}
             >{this.props.isLight ? "dark" : "light"}</span>
           </div>
+          <SabtTime>
+              {this.props.timeArr}
+          </SabtTime> 
         </>
       )
     }

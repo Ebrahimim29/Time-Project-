@@ -62,10 +62,11 @@ const App =()=>{
             <h2>It is {new Date().toLocaleDateString()}</h2>
             <Hello title={title}/>     
             {/* <Timer handleSetTitle={handleSetTitle}/>       */}
-            <Timer isLight={isLight} handleSetIsLight={handleSetIsLight}/>
-            <SabtTime>
-              {timeArr}
-            </SabtTime>   
+            <Timer
+            timeArr={timeArr}
+            setTimeArr={setTimeArr} 
+            isLight={isLight} handleSetIsLight={handleSetIsLight}/>
+  
           </div>
 
         )
