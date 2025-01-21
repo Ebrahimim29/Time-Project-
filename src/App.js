@@ -4,6 +4,10 @@ import { createRoot } from 'react-dom/client';
 import './Style.css'
 import Hello from './Hello';
 import Timer from './Timer';
+import SabtTime from './SabtTime';
+
+
+
 
 //روش اول: کامپوننت نوع کلاسی
 // class App extends React.Component {
@@ -36,6 +40,7 @@ import Timer from './Timer';
 const App =()=>{
   const [title , setTitle]=useState("This is a Props!");
   const [isLight , setIsLight]=useState(false);
+  const [timeArr , setTimeArr]=useState(["00:05:00","00:06:00"]);
 
   // const handleSetTitle=()=>{
   //   setTitle("Welcome To Site!")
@@ -57,8 +62,12 @@ const App =()=>{
             <h2>It is {new Date().toLocaleDateString()}</h2>
             <Hello title={title}/>     
             {/* <Timer handleSetTitle={handleSetTitle}/>       */}
-            <Timer isLight={isLight} handleSetIsLight={handleSetIsLight}/>      
+            <Timer isLight={isLight} handleSetIsLight={handleSetIsLight}/>
+            <SabtTime>
+              {timeArr}
+            </SabtTime>   
           </div>
+
         )
 }
 export default App;

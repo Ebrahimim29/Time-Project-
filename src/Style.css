@@ -24,6 +24,11 @@ body{
   background: black;
   color: chocolate;
 }
+.timer:hover{
+  cursor: pointer;
+  box-shadow: 0 0 5px white;
+  transition: all 200ms ease;
+}
 
 button{
   width: 100px;
