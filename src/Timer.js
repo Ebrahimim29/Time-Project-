@@ -3,6 +3,7 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import './Style.css'
 import SabtTime from './SabtTime';
+import { TestContext } from './TestContext';
 
 var interval;
 
@@ -16,6 +17,8 @@ class Timer extends React.Component{
         isStart:false
       }
     }
+    static contextType = TestContext;
+
     startInterval=()=>{
       if(this.state.isStart == false){
         this.setState({
@@ -63,7 +66,8 @@ class Timer extends React.Component{
       let m = this.state.minute;
       let s = this.state.second;
       let newTime = `${h > 9 ? h : "0"+h} : ${m > 9 ? m : "0"+m} : ${s > 9 ? s : "0"+s}`
-      this.props.setTimeArr([...this.props.timeArr , newTime])
+      // this.props.setTimeArr([...this.props.timeArr , newTime])
+      this.context.setTimeArr([...this.context.timeArr , newTime])
 
     }
     render(){
@@ -73,7 +77,7 @@ class Timer extends React.Component{
         
       return(
         <>
-          <h2 className='timer' onClick={this.handleSaveTime}>
+          <h2 className='timer' onClick={this.handleSaveTime} style={{color:this.context}}>
             {/* {this.state.hour+":"+this.state.minute+":"+this.state.second} */}
             {`${h > 9 ? h : "0"+h} : ${m > 9 ? m : "0"+m} : ${s > 9 ? s : "0"+s}`}
           </h2>
@@ -91,7 +95,7 @@ class Timer extends React.Component{
             >{this.props.isLight ? "dark" : "light"}</span>
           </div>
           <SabtTime>
-              {this.props.timeArr}
+              {this.context.timeArr}
           </SabtTime> 
         </>
       )

@@ -5,6 +5,7 @@ import './Style.css'
 import Hello from './Hello';
 import Timer from './Timer';
 import SabtTime from './SabtTime';
+import { TestContext } from './TestContext';
 
 
 
@@ -58,16 +59,23 @@ const App =()=>{
   },[isLight])
 
   return(
-          <div className='main' style={{background:isLight ? "white": "black"}}>
+      // <TestContext.Provider value="white">
+      <TestContext.Provider value={{
+        timeArr:timeArr,
+        setTimeArr:setTimeArr
+      }}>
+        <div className='main' style={{background:isLight ? "white": "black"}}>
             <h2>It is {new Date().toLocaleDateString()}</h2>
             <Hello title={title}/>     
             {/* <Timer handleSetTitle={handleSetTitle}/>       */}
             <Timer
-            timeArr={timeArr}
-            setTimeArr={setTimeArr} 
+            // timeArr={timeArr}
+            // setTimeArr={setTimeArr} 
             isLight={isLight} handleSetIsLight={handleSetIsLight}/>
   
           </div>
+      </TestContext.Provider>
+          
 
         )
 }
