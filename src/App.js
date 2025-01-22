@@ -61,8 +61,8 @@ const App =()=>{
   return(
       // <TestContext.Provider value="white">
       <TestContext.Provider value={{
-        timeArr:timeArr,
-        setTimeArr:setTimeArr
+        timeArr,
+        setTimeArr
       }}>
         <div className='main' style={{background:isLight ? "white": "black"}}>
             <h2>It is {new Date().toLocaleDateString()}</h2>
@@ -72,6 +72,7 @@ const App =()=>{
             // timeArr={timeArr}
             // setTimeArr={setTimeArr} 
             isLight={isLight} handleSetIsLight={handleSetIsLight}/>
+            <SabtTime/>
   
           </div>
       </TestContext.Provider>
